@@ -10,16 +10,19 @@ html {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #141414;
 }
 
 body {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: #141414;
   overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 #root {
@@ -27,23 +30,24 @@ body {
   min-height: 100vh;
   background-color: #141414;
   overflow-x: hidden;
+  position: relative;
 }
 
 /* Prevent horizontal scrolling on all devices */
-html, body, #root {
+html, body, #root, div {
   max-width: 100vw;
-  position: relative;
 }
 
 /* Improve touch scrolling on mobile */
 body {
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: contain;
 }
 
 /* Prevent pull-to-refresh on mobile browsers */
-body {
-  overscroll-behavior-y: contain;
+html, body {
+  overscroll-behavior: contain;
 }
 
 /* Improve font rendering on retina displays */
@@ -60,4 +64,16 @@ body {
     padding-left: max(0px, env(safe-area-inset-left));
     padding-right: max(0px, env(safe-area-inset-right));
   }
+}
+
+/* Fix for any potential white gaps */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Ensure all containers have proper background */
+div, section, main, article {
+  background-color: inherit;
 }

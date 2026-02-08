@@ -1,7 +1,9 @@
 .titlecards {
   margin-top: 50px;
   padding-left: 4vw;
-  padding-right: 4vw;
+  padding-right: 0;
+  background-color: #141414;
+  overflow: hidden;
 }
 
 .titlecards h2 {
@@ -9,6 +11,7 @@
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
+  padding-right: 4vw;
 }
 
 .card-list {
@@ -17,9 +20,11 @@
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 1rem;
+  padding-right: 4vw;
   scrollbar-width: none;
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
 }
 
 .card-list::-webkit-scrollbar {
@@ -28,15 +33,21 @@
 
 .card {
   min-width: 240px;
+  max-width: 240px;
   flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
   text-decoration: none;
   display: block;
+  scroll-snap-align: start;
 }
 
 .card:hover {
   transform: scale(1.05);
+}
+
+.card:active {
+  transform: scale(0.98);
 }
 
 .card img {
@@ -45,6 +56,7 @@
   object-fit: cover;
   border-radius: 4px;
   display: block;
+  background-color: #2a2a2a;
 }
 
 .card p {
@@ -55,6 +67,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-right: 0.5rem;
 }
 
 /* Tablet responsive */
@@ -62,15 +75,16 @@
   .titlecards {
     margin-top: 40px;
     padding-left: 3.5vw;
-    padding-right: 3.5vw;
   }
 
   .titlecards h2 {
     font-size: 1.35rem;
+    padding-right: 3.5vw;
   }
 
   .card {
     min-width: 220px;
+    max-width: 220px;
   }
 
   .card img {
@@ -80,6 +94,10 @@
   .card p {
     font-size: 0.875rem;
   }
+
+  .card-list {
+    padding-right: 3.5vw;
+  }
 }
 
 /* Mobile landscape and smaller tablets */
@@ -87,25 +105,27 @@
   .titlecards {
     margin-top: 30px;
     padding-left: 3vw;
-    padding-right: 3vw;
   }
 
   .titlecards h2 {
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
+    padding-right: 3vw;
   }
 
   .card-list {
     gap: 0.75rem;
     padding-bottom: 0.75rem;
+    padding-right: 3vw;
   }
 
   .card {
-    min-width: 180px;
+    min-width: 170px;
+    max-width: 170px;
   }
 
   .card img {
-    height: 101px;
+    height: 96px;
   }
 
   .card p {
@@ -127,25 +147,27 @@
 @media (max-width: 480px) {
   .titlecards {
     margin-top: 25px;
-    padding-left: 2.5vw;
-    padding-right: 2.5vw;
+    padding-left: 3vw;
   }
 
   .titlecards h2 {
     font-size: 1.1rem;
     margin-bottom: 0.6rem;
+    padding-right: 3vw;
   }
 
   .card-list {
     gap: 0.6rem;
+    padding-right: 3vw;
   }
 
   .card {
-    min-width: 150px;
+    min-width: 140px;
+    max-width: 140px;
   }
 
   .card img {
-    height: 84px;
+    height: 79px;
     border-radius: 3px;
   }
 
@@ -159,20 +181,26 @@
 @media (max-width: 360px) {
   .titlecards {
     margin-top: 20px;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 2.5vw;
   }
 
   .titlecards h2 {
     font-size: 1rem;
+    padding-right: 2.5vw;
+  }
+
+  .card-list {
+    gap: 0.5rem;
+    padding-right: 2.5vw;
   }
 
   .card {
-    min-width: 130px;
+    min-width: 120px;
+    max-width: 120px;
   }
 
   .card img {
-    height: 73px;
+    height: 68px;
   }
 
   .card p {

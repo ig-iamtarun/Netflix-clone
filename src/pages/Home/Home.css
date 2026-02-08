@@ -5,23 +5,41 @@
   background-color: #141414;
   padding-top: 0;
   margin-top: 0;
+  overflow-x: hidden;
 }
 
 /* Hero Section */
 .hero {
   position: relative;
   width: 100%;
-  max-width: 100%;
   height: 100vh;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .banner-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Add gradient overlay for better text visibility */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(20, 20, 20, 0.9) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Hero Caption */
@@ -49,6 +67,7 @@
   width: 90%;
   max-width: 420px;
   margin-bottom: 1.5rem;
+  display: block;
 }
 
 .hero-description {
@@ -92,6 +111,10 @@
   transform: scale(1.05);
 }
 
+.btn:active {
+  transform: scale(0.98);
+}
+
 .dark-btn {
   background-color: rgba(109, 109, 110, 0.7);
   color: #ffffff;
@@ -104,12 +127,16 @@
 /* More Cards Section */
 .more-cards {
   padding-bottom: 2rem;
+  background-color: #141414;
+  position: relative;
+  z-index: 2;
+  margin-top: -5px;
 }
 
 /* Tablet responsive */
 @media (max-width: 1024px) {
   .hero {
-    height: 70vh;
+    height: 80vh;
   }
 
   .hero-caption {
@@ -136,23 +163,24 @@
 /* Mobile landscape and smaller tablets */
 @media (max-width: 768px) {
   .hero {
-    height: 60vh;
+    height: 70vh;
   }
 
   .hero-caption {
     bottom: 10%;
     left: 4%;
-    max-width: 90%;
+    max-width: 92%;
+    right: 4%;
   }
 
   .caption-img {
-    max-width: 300px;
+    max-width: 280px;
     margin-bottom: 1rem;
   }
 
   .hero-description {
-    font-size: 0.95rem;
-    max-width: 350px;
+    font-size: 0.9rem;
+    max-width: 100%;
     margin-bottom: 1rem;
     line-height: 1.5;
   }
@@ -163,13 +191,13 @@
   }
 
   .btn {
-    padding: 0.65rem 1.5rem;
-    font-size: 0.95rem;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
   }
 
   .btn img {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
 
   .more-cards {
@@ -180,41 +208,41 @@
 /* Small mobile devices */
 @media (max-width: 480px) {
   .hero {
-    height: 55vh;
+    height: 65vh;
+    min-height: 500px;
   }
 
   .hero-caption {
     bottom: 8%;
     left: 3%;
+    right: 3%;
     max-width: 94%;
   }
 
   .caption-img {
-    max-width: 250px;
+    max-width: 240px;
     margin-bottom: 0.75rem;
   }
 
   .hero-description {
     font-size: 0.85rem;
-    max-width: 300px;
     margin-bottom: 0.75rem;
     line-height: 1.4;
   }
 
   .hero-btns {
-    gap: 0.5rem;
+    gap: 0.6rem;
     margin-top: 0.75rem;
-    flex-wrap: wrap;
   }
 
   .btn {
-    padding: 0.55rem 1.25rem;
-    font-size: 0.875rem;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.85rem;
   }
 
   .btn img {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   .more-cards {
@@ -225,7 +253,8 @@
 /* Extra small devices */
 @media (max-width: 360px) {
   .hero {
-    height: 50vh;
+    height: 60vh;
+    min-height: 450px;
   }
 
   .hero-caption {
@@ -238,7 +267,6 @@
 
   .hero-description {
     font-size: 0.8rem;
-    max-width: 260px;
   }
 
   .btn {
@@ -247,7 +275,47 @@
   }
 
   .btn img {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Very short screens (landscape) */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    height: 100vh;
+    min-height: auto;
+  }
+
+  .hero-caption {
+    bottom: 5%;
+    left: 3%;
+    max-width: 50%;
+  }
+
+  .caption-img {
+    max-width: 200px;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .hero-btns {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .btn {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.75rem;
+  }
+
+  .btn img {
+    width: 16px;
+    height: 16px;
   }
 }
